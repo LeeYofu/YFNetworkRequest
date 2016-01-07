@@ -50,7 +50,13 @@ static NSString * const YFNetworkRequestCache = @"YFNetworkRequestCache";
     [self requestMethod:YFNetworkRequestTypePOST subUrlString:subUrlString parameters:parameters cachePolicy:requestCachePolicy success:sucess failure:failure];
 }
 
-+ (void)postWithSubUrl:(NSString *)subUrl parameters:(id)parameters imageDatas:(NSArray *)imageDatas imageNames:(NSArray *)imageNames videoData:(NSData *)videoData sucess:(SucessBlock)sucess failed:(FailureBlock)failure {
++ (void)postWithSubUrl:(NSString *)subUrl
+            parameters:(id)parameters
+            imageDatas:(NSArray *)imageDatas
+            imageNames:(NSArray *)imageNames
+             videoData:(NSData *)videoData
+                sucess:(SucessBlock)sucess
+                failed:(FailureBlock)failure {
     
     [[YFNetworkRequest sharedInstance] POST:subUrl parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         for (int i = 0; i<imageDatas.count; i++) {

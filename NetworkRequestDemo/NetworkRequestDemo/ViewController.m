@@ -10,7 +10,7 @@
 #import "YFNetworkRequest.h"
 
 @interface ViewController ()
-
+@property (nonatomic, strong) UILabel *label;
 @end
 
 @implementation ViewController
@@ -18,7 +18,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self setSubViews];
+    
     [self dataRequest];
+}
+
+- (void)setSubViews {
+    self.label = ({
+        UILabel *view = [[UILabel alloc] initWithFrame:CGRectMake(10, 30, 200, 30)];
+        view.backgroundColor = [UIColor yellowColor];
+        view;
+    });
+    
+    [self.view addSubview:self.label];
 }
 
 - (void)dataRequest {
@@ -29,6 +41,9 @@
     
     [YFNetworkRequest getWithSubUrl:@"/JobUserAPI/getUserInfoById" parameters:parameters sucess:^(NSURLSessionDataTask *task, id responseObject) {
         NSLog(@"%@", responseObject);
+        NSDictionary *oriDic = (NSDictionary *)responseObject;
+        NSDictionary *dataDic = oriDic[@"data"];
+        self.label.text = dataDic[@"city"];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"%@", error);
     }];

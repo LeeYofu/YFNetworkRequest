@@ -49,6 +49,12 @@ typedef void(^FailureBlock)(NSURLSessionDataTask *task, NSError *error);
                failure:(FailureBlock)failure;
 
 // 上传图片/诗篇
-+ (void)postWithSubUrl:(NSString *)subUrl parameters:(id)parameters imageDatas:(NSArray *)imageDatas imageNames:(NSArray *)imageNames videoData:(NSData *)videoData sucess:(SucessBlock)sucess failed:(FailureBlock)failure;
++ (void)postWithSubUrl:(NSString *)subUrl
+            parameters:(id)parameters
+            imageDatas:(NSArray *)imageDatas
+            imageNames:(NSArray *)imageNames
+             videoData:(NSData *)videoData
+                sucess:(SucessBlock)sucess
+                failed:(FailureBlock)failure;
 
 @end
