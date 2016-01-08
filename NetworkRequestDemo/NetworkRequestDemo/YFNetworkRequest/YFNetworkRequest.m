@@ -82,7 +82,7 @@ static NSString * const YFNetworkRequestCache = @"YFNetworkRequestCache";
             failure(task, error);
         }
     }];
-
+    
 }
 
 #pragma mark - private
@@ -139,7 +139,7 @@ static NSString * const YFNetworkRequestCache = @"YFNetworkRequestCache";
 }
 
 + (void)requestMethod:(YFNetworkRequestType)type
-            subUrlString:(NSString *)subUrlString
+         subUrlString:(NSString *)subUrlString
            parameters:(id)parameters
                 cache:(YYCache *)cache
              cacheKey:(NSString *)cacheKey
