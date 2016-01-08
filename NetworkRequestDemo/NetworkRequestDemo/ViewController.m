@@ -7,10 +7,12 @@
 //
 
 #import "ViewController.h"
+#import "UIImageView+WebCache.h"
 #import "YFNetworkRequest.h"
 
 @interface ViewController ()
 @property (nonatomic, strong) UILabel *label;
+@property (nonatomic, strong) UIImageView *imageView;
 @end
 
 @implementation ViewController
@@ -30,7 +32,13 @@
         view;
     });
     
+    self.imageView = ({
+        UIImageView *view = [[UIImageView alloc] initWithFrame:CGRectMake(10, 100, 150, 150)];
+        view;
+    });
+    
     [self.view addSubview:self.label];
+    [self.view addSubview:self.imageView];
 }
 
 - (void)dataRequest {
@@ -44,6 +52,7 @@
         NSDictionary *oriDic = (NSDictionary *)responseObject;
         NSDictionary *dataDic = oriDic[@"data"];
         self.label.text = dataDic[@"city"];
+        [self.imageView sd_setImageWithURL:[NSURL URLWithString:dataDic[@"student_img"]]];
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         NSLog(@"%@", error);
     }];
